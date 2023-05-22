@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+
+<?php
+$students = [];
+
+function calculateSum($students, $subject) {
+    $sum = 0;
+    foreach ($students as $student) {
+        $sum += $student[$subject];
+    }
+    return $sum;
+}
+
+function calculateAverage($students, $subject) {
+    $totalStudents = count($students);
+    $sum = calculateSum($students, $subject);
+    $average = $sum / $totalStudents;
+    return $average;
+}
+
+$students[] = ['english' => 94, 'maths' => 85, 'science' => 95];
+$students[] = ['english' => 81, 'maths' => 79, 'science' => 99];
+$students[] = ['english' => 95, 'maths' => 90, 'science' => 92];
+$students[] = ['english' => 78, 'maths' => 76, 'science' => 87];
+
+$totalStudents = count($students);
+
+for ($i = 0; $i < $totalStudents; $i++) {
+    $studentNumber = $i + 1;
+    $sum = $students[$i]['english'] + $students[$i]['maths'] + $students[$i]['science'];
+    echo "Marks for student $studentNumber are: $sum<br>";
+}
+
+echo "<br>";
+
+$englishAverage = calculateAverage($students, 'english');
+$mathsAverage = calculateAverage($students, 'maths');
+$scienceAverage = calculateAverage($students, 'science');
+
+echo "Average English marks for the whole class: $englishAverage<br>";
+echo "Average Maths marks for the whole class: $mathsAverage<br>";
+echo "Average Science marks for the whole class: $scienceAverage<br>";
+?>
+
+</body>
+</html>
